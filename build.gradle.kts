@@ -1,14 +1,14 @@
 plugins {
     kotlin("jvm") version "1.5.10"
-    id("com.github.dcendents.android-maven") version "1.5"
+    id("com.github.dcendents.android-maven") version "2.1"
 }
 
 group = "com.github.xuxiangjun"
-version = "0.1"
+version = "0.2"
 
 repositories {
     mavenCentral()
-    maven { setUrl("https://jitpack.io") }
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
