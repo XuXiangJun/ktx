@@ -1,5 +1,7 @@
 package com.github.xuxiangjun.javaext
 
+import java.nio.charset.Charset
+import java.security.MessageDigest
 import java.util.*
 
 /**
@@ -29,6 +31,27 @@ fun CharSequence.base64Decode(): String {
 
 fun CharSequence.base64DecodeToByteArray(): ByteArray {
     return Base64.getDecoder().decode(toString())
+}
+
+fun CharSequence.md5(
+    charset: Charset = Charsets.UTF_8,
+): ByteArray {
+    val md = MessageDigest.getInstance("md5")
+    return md.digest(toString().toByteArray(charset))
+}
+
+fun CharSequence.sha1(
+    charset: Charset = Charsets.UTF_8,
+): ByteArray {
+    val md = MessageDigest.getInstance("sha-1")
+    return md.digest(toString().toByteArray(charset))
+}
+
+fun CharSequence.sha256(
+    charset: Charset = Charsets.UTF_8,
+): ByteArray {
+    val md = MessageDigest.getInstance("sha-256")
+    return md.digest(toString().toByteArray(charset))
 }
 
 

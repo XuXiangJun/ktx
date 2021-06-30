@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.5.20"
     id("com.github.dcendents.android-maven") version "2.1"
 }
 
@@ -13,4 +13,5 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 }
