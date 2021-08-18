@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.xuxiangjun"
-version = "0.2"
+version = "0.4"
 
 repositories {
     mavenCentral()
@@ -13,5 +13,4 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    testImplementation(kotlin("test"))
 }
