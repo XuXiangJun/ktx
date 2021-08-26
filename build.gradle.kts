@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.5.21"
-    id("com.github.dcendents.android-maven") version "2.1"
+    kotlin("jvm") version "1.5.30"
+//    id("com.github.dcendents.android-maven") version "2.1"
 }
 
 group = "com.github.xuxiangjun"
-version = "0.4"
+version = "0.5"
 
 repositories {
     mavenCentral()
@@ -12,5 +12,5 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.30")
 }
