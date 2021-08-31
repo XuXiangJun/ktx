@@ -4,8 +4,6 @@ import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.util.*
 
-private val UTF8 = Charsets.UTF_8
-
 /**
  * Convert hex String to ByteArray
  */
@@ -19,17 +17,17 @@ fun CharSequence.hexToByteArray(): ByteArray {
     }
 }
 
-fun CharSequence.base64Encode(srcCharset: Charset = UTF8): String {
+fun CharSequence.base64Encode(srcCharset: Charset = Charsets.UTF_8): String {
     val data = toString().toByteArray(srcCharset)
     return Base64.getEncoder().encodeToString(data)
 }
 
-fun CharSequence.base64EncodeToByteArray(srcCharset: Charset = UTF8): ByteArray {
+fun CharSequence.base64EncodeToByteArray(srcCharset: Charset = Charsets.UTF_8): ByteArray {
     val data = toString().toByteArray(srcCharset)
     return Base64.getEncoder().encode(data)
 }
 
-fun CharSequence.base64Decode(dstCharset: Charset = UTF8): String {
+fun CharSequence.base64Decode(dstCharset: Charset = Charsets.UTF_8): String {
     return Base64.getDecoder().decode(toString()).toString(dstCharset)
 }
 
@@ -37,17 +35,17 @@ fun CharSequence.base64DecodeToByteArray(): ByteArray {
     return Base64.getDecoder().decode(toString())
 }
 
-fun CharSequence.md5(srcCharset: Charset = UTF8): ByteArray {
+fun CharSequence.md5(srcCharset: Charset = Charsets.UTF_8): ByteArray {
     val md = MessageDigest.getInstance("md5")
     return md.digest(toString().toByteArray(srcCharset))
 }
 
-fun CharSequence.sha1(srcCharset: Charset = UTF8): ByteArray {
+fun CharSequence.sha1(srcCharset: Charset = Charsets.UTF_8): ByteArray {
     val md = MessageDigest.getInstance("sha-1")
     return md.digest(toString().toByteArray(srcCharset))
 }
 
-fun CharSequence.sha256(srcCharset: Charset = UTF8): ByteArray {
+fun CharSequence.sha256(srcCharset: Charset = Charsets.UTF_8): ByteArray {
     val md = MessageDigest.getInstance("sha-256")
     return md.digest(toString().toByteArray(srcCharset))
 }

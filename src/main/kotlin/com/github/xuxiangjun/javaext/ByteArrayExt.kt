@@ -1,6 +1,7 @@
 package com.github.xuxiangjun.javaext
 
 import java.io.ByteArrayOutputStream
+import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.util.*
 
@@ -35,8 +36,8 @@ fun ByteArray.base64Decode(): ByteArray {
     return Base64.getDecoder().decode(this)
 }
 
-fun ByteArray.base64DecodeToString(): String {
-    return Base64.getDecoder().decode(this).toString(Charsets.UTF_8)
+fun ByteArray.base64DecodeToString(dstCharset: Charset = Charsets.UTF_8): String {
+    return Base64.getDecoder().decode(this).toString(dstCharset)
 }
 
 /**
