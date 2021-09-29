@@ -5,6 +5,10 @@ import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.util.*
 
+fun ByteArray.toUtf8String(): String {
+    return toString(Charsets.UTF_8)
+}
+
 /**
  * Convert ByteArray to hex String
  */
@@ -17,7 +21,7 @@ fun ByteArray.toHex(upperCase: Boolean = false): String {
         }
         var hex = i.toString(16)
         if (upperCase) {
-           hex = hex.uppercase()
+            hex = hex.uppercase()
         }
         sb.append(hex)
     }

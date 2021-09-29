@@ -1,7 +1,6 @@
 package com.github.xuxiangjun.javaext
 
-import java.io.Closeable
-import java.io.InputStream
+import java.io.*
 
 fun uses(vararg args: Closeable, block: () -> Unit) {
     try {
@@ -66,4 +65,9 @@ fun InputStream.readInt64(littleEndian: Boolean = true): Long {
                 ((read().toLong() and 0xffL) shl 8) or
                 (read().toLong() and 0xffL)
     }
+}
+
+@Throws(FileNotFoundException::class)
+fun File.toBufferReader(): BufferedReader {
+    return BufferedReader(FileReader(this))
 }
