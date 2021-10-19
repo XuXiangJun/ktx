@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.5.30"
+    kotlin("jvm") version "1.5.31"
     id("com.github.dcendents.android-maven") version "2.1"
 }
 
@@ -12,5 +12,5 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.30")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
 }

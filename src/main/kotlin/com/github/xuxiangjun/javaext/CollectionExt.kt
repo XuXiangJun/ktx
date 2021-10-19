@@ -44,3 +44,15 @@ fun <K, V> Map<K, V>.random(): Map.Entry<K, V> {
 
     throw ArrayIndexOutOfBoundsException()
 }
+
+fun <K, V> Map<K, V>.copyOf(vararg keys: K): Map<K, V> {
+    val result = mutableMapOf<K, V>()
+    for (key in keys) {
+        val v = this[key]
+        if (v != null) {
+            result[key] = v
+        }
+    }
+
+    return result
+}
