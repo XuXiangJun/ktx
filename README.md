@@ -1,7 +1,7 @@
 # xxj-ktext
 extensions for kotlin
 
-[![](https://jitpack.io/v/XuXiangJun/xxj-ktext.svg)](https://jitpack.io/#XuXiangJun/xxj-ktext)
+[![](https://jitpack.io/v/XuXiangJun/kt-ext.svg)](https://jitpack.io/#XuXiangJun/kt-ext)
 
 ```
     allprojects {
@@ -13,6 +13,6 @@ extensions for kotlin
 ```
 ```
     dependencies {
-            implementation 'com.github.XuXiangJun:xxj-ktext:0.6.0'
+            implementation 'com.github.XuXiangJun:kt-ext:0.6.0'
     }
 ```
