@@ -1,4 +1,4 @@
-# xxj-ktext
+# kt-ext
 extensions for kotlin
 
 [![](https://jitpack.io/v/XuXiangJun/kt-ext.svg)](https://jitpack.io/#XuXiangJun/kt-ext)
