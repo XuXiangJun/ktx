@@ -1,2 +1,2 @@
-rootProject.name = "xxj-ktext"
+rootProject.name = "kt-ext"
 
