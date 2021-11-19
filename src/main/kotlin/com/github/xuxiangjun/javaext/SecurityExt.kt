@@ -37,9 +37,7 @@ fun MessageDigest.digest(file: File): ByteArray {
 interface Hash {
     object MD5 : Hash {
         override val messageDigest: MessageDigest
-            get() = MessageDigest.getInstance("md5").apply {
-                println("MMMMMM")
-            }
+            get() = MessageDigest.getInstance("md5")
     }
 
     object SHA1 : Hash {
@@ -54,15 +52,15 @@ interface Hash {
 
     val messageDigest: MessageDigest
 
-    fun digest(data: ByteArray): ByteArray {
+    fun hash(data: ByteArray): ByteArray {
         return messageDigest.digest(data)
     }
 
-    fun digest(charSequence: CharSequence, charset: Charset = Charsets.UTF_8): ByteArray {
+    fun hash(charSequence: CharSequence, charset: Charset = Charsets.UTF_8): ByteArray {
         return messageDigest.digest(charSequence.toString().toByteArray(charset))
     }
 
-    fun digest(file: File): ByteArray {
+    fun hash(file: File): ByteArray {
         return messageDigest.digest(file)
     }
 }

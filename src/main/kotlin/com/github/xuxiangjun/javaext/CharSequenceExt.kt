@@ -36,15 +36,15 @@ fun CharSequence.base64DecodeToByteArray(): ByteArray {
 }
 
 fun CharSequence.md5(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    return Hash.MD5.digest(this, srcCharset)
+    return Hash.MD5.hash(this, srcCharset)
 }
 
 fun CharSequence.sha1(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    return Hash.SHA1.digest(this, srcCharset)
+    return Hash.SHA1.hash(this, srcCharset)
 }
 
 fun CharSequence.sha256(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    return Hash.SHA256.digest(this, srcCharset)
+    return Hash.SHA256.hash(this, srcCharset)
 }
 
 fun CharSequence.isEmail(): Boolean {

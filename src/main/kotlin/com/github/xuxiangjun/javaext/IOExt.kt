@@ -73,13 +73,13 @@ fun File.toBufferReader(): BufferedReader {
 }
 
 fun File.md5(): ByteArray {
-    return Hash.MD5.digest(this)
+    return Hash.MD5.hash(this)
 }
 
 fun File.sha1(): ByteArray {
-    return Hash.SHA1.digest(this)
+    return Hash.SHA1.hash(this)
 }
 
 fun File.sha256(): ByteArray {
-    return Hash.SHA256.digest(this)
+    return Hash.SHA256.hash(this)
 }
