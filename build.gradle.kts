@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.xuxiangjun"
-version = "0.5.3"
+version = "0.7.0"
 
 repositories {
     mavenCentral()

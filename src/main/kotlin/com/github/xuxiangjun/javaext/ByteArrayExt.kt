@@ -1,6 +1,7 @@
 package com.github.xuxiangjun.javaext
 
 import java.io.ByteArrayOutputStream
+import java.math.BigInteger
 import java.nio.charset.Charset
 import java.security.MessageDigest
 import java.util.*
@@ -72,6 +73,13 @@ fun ByteArray.toLong(bigEndian: Boolean = false): Long {
         ret = ((this[index].toLong() and 0xffL) shl (8 * i)) or ret
     }
     return ret
+}
+
+fun ByteArray.toPositiveBigInteger(): BigInteger {
+    val bytes = ByteArray(size + 1)
+    bytes[0] = 0
+    System.arraycopy(this, 0, bytes, 1, size)
+    return BigInteger(bytes)
 }
 
 fun mergeBytes(vararg dataArray: ByteArray): ByteArray {
