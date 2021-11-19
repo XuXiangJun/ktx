@@ -75,7 +75,7 @@ fun ByteArray.toLong(bigEndian: Boolean = false): Long {
     return ret
 }
 
-fun ByteArray.toPositiveBigInteger(): BigInteger {
+fun ByteArray.toUBigInteger(): BigInteger {
     val bytes = ByteArray(size + 1)
     bytes[0] = 0
     System.arraycopy(this, 0, bytes, 1, size)
@@ -100,16 +100,13 @@ fun mergeBytesList(dataList: List<ByteArray>): ByteArray {
 }
 
 fun ByteArray.md5(): ByteArray {
-    val md = MessageDigest.getInstance("md5")
-    return md.digest(this)
+    return Hash.MD5.digest(this)
 }
 
 fun ByteArray.sha1(): ByteArray {
-    val md = MessageDigest.getInstance("sha-1")
-    return md.digest(this)
+    return Hash.SHA1.digest(this)
 }
 
 fun ByteArray.sha256(): ByteArray {
-    val md = MessageDigest.getInstance("sha-256")
-    return md.digest(this)
+    return Hash.SHA256.digest(this)
 }

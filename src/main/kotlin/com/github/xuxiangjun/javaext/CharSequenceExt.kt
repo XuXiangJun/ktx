@@ -36,18 +36,15 @@ fun CharSequence.base64DecodeToByteArray(): ByteArray {
 }
 
 fun CharSequence.md5(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    val md = MessageDigest.getInstance("md5")
-    return md.digest(toString().toByteArray(srcCharset))
+    return Hash.MD5.digest(this, srcCharset)
 }
 
 fun CharSequence.sha1(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    val md = MessageDigest.getInstance("sha-1")
-    return md.digest(toString().toByteArray(srcCharset))
+    return Hash.SHA1.digest(this, srcCharset)
 }
 
 fun CharSequence.sha256(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    val md = MessageDigest.getInstance("sha-256")
-    return md.digest(toString().toByteArray(srcCharset))
+    return Hash.SHA256.digest(this, srcCharset)
 }
 
 fun CharSequence.isEmail(): Boolean {

@@ -71,3 +71,15 @@ fun InputStream.readInt64(littleEndian: Boolean = true): Long {
 fun File.toBufferReader(): BufferedReader {
     return BufferedReader(FileReader(this))
 }
+
+fun File.md5(): ByteArray {
+    return Hash.MD5.digest(this)
+}
+
+fun File.sha1(): ByteArray {
+    return Hash.SHA1.digest(this)
+}
+
+fun File.sha256(): ByteArray {
+    return Hash.SHA256.digest(this)
+}

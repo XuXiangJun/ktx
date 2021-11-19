@@ -3,6 +3,7 @@ package com.github.xuxiangjun.javaext
 import java.io.File
 import java.io.FileInputStream
 import java.math.BigInteger
+import java.nio.charset.Charset
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
 import java.security.MessageDigest
@@ -31,6 +32,39 @@ fun MessageDigest.digest(file: File): ByteArray {
     }
 
     return digest()
+}
+
+interface Hash {
+    object MD5 : Hash {
+        override val messageDigest: MessageDigest
+            get() = MessageDigest.getInstance("md5").apply {
+                println("MMMMMM")
+            }
+    }
+
+    object SHA1 : Hash {
+        override val messageDigest: MessageDigest
+            get() = MessageDigest.getInstance("sha-1")
+    }
+
+    object SHA256 : Hash {
+        override val messageDigest: MessageDigest
+            get() = MessageDigest.getInstance("sha-256")
+    }
+
+    val messageDigest: MessageDigest
+
+    fun digest(data: ByteArray): ByteArray {
+        return messageDigest.digest(data)
+    }
+
+    fun digest(charSequence: CharSequence, charset: Charset = Charsets.UTF_8): ByteArray {
+        return messageDigest.digest(charSequence.toString().toByteArray(charset))
+    }
+
+    fun digest(file: File): ByteArray {
+        return messageDigest.digest(file)
+    }
 }
 
 object EC {
@@ -100,18 +134,8 @@ object EC {
     }
 
     fun generateECPublicKey(x: ByteArray, y: ByteArray, param: ECParameterSpec): ECPublicKey {
-        val xInteger = ByteArray(x.size + 1).also {
-            it[0] = 0
-            System.arraycopy(x, 0, it, 1, x.size)
-        }.let {
-            BigInteger(it)
-        }
-        val yInteger = ByteArray(y.size + 1).also {
-            it[0] = 0
-            System.arraycopy(y, 0, it, 1, y.size)
-        }.let {
-            BigInteger(it)
-        }
+        val xInteger = x.toUBigInteger()
+        val yInteger = y.toUBigInteger()
         return generateECPublicKey(xInteger, yInteger, param)
     }
 
@@ -122,12 +146,7 @@ object EC {
     }
 
     fun generateECPrivateKey(s: ByteArray, param: ECParameterSpec): ECPrivateKey {
-        val sInteger = ByteArray(s.size + 1).also {
-            it[0] = 0
-            System.arraycopy(s, 0, it, 1, s.size)
-        }.let {
-            BigInteger(it)
-        }
+        val sInteger = s.toUBigInteger()
         return generateECPrivateKey(sInteger, param)
     }
 
