@@ -82,6 +82,13 @@ fun ByteArray.toUBigInteger(): BigInteger {
     return BigInteger(bytes)
 }
 
+fun ByteArray.toUInt8Array(): IntArray {
+    val bytes = this
+    return IntArray(size) { index ->
+        bytes[index].toInt() and 0xff
+    }
+}
+
 fun mergeBytes(vararg dataArray: ByteArray): ByteArray {
     return mergeBytesList(dataArray.toList())
 }

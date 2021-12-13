@@ -56,3 +56,12 @@ fun <K, V> Map<K, V>.copyOf(vararg keys: K): Map<K, V> {
 
     return result
 }
+
+fun <SK, SV, DK, DV> Map<SK, SV>.mapMap(transform: (Map.Entry<SK, SV>) -> Pair<DK, DV>): Map<DK, DV> {
+    val ret = mutableMapOf<DK, DV>()
+    for (entry in this) {
+        val pair = transform(entry)
+        ret[pair.first] = pair.second
+    }
+    return ret
+}

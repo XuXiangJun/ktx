@@ -1,7 +1,6 @@
 package com.github.xuxiangjun.javaext
 
 import java.nio.charset.Charset
-import java.security.MessageDigest
 import java.util.*
 
 /**
