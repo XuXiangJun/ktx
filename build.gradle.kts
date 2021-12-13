@@ -3,8 +3,7 @@ plugins {
     id("com.github.dcendents.android-maven") version "2.1"
 }
 
-group = "com.github.xuxiangjun"
-version = "0.8.0"
+group = "com.github.XuXiangJun"
 
 repositories {
     mavenCentral()
