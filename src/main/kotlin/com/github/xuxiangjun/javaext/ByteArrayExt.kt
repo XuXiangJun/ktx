@@ -3,7 +3,6 @@ package com.github.xuxiangjun.javaext
 import java.io.ByteArrayOutputStream
 import java.math.BigInteger
 import java.nio.charset.Charset
-import java.security.MessageDigest
 import java.util.*
 
 fun ByteArray.toUtf8String(): String {

@@ -45,16 +45,27 @@ fun <K, V> Map<K, V>.random(): Map.Entry<K, V> {
     throw ArrayIndexOutOfBoundsException()
 }
 
-fun <K, V> Map<K, V>.copyOf(vararg keys: K): Map<K, V> {
-    val result = mutableMapOf<K, V>()
+fun <K, V> copy(src: Map<K, V>, to: MutableMap<K, V>, keys: Iterable<K>) {
     for (key in keys) {
-        val v = this[key]
+        val v = src[key]
         if (v != null) {
-            result[key] = v
+            to[key] = v
         }
     }
+}
 
+fun <K, V> Map<K, V>.copyOf(vararg keys: K): Map<K, V> {
+    val result = mutableMapOf<K, V>()
+    copy(this, result, keys.toList())
     return result
+}
+
+fun <K, V> Map<K, V>.copyTo(to: MutableMap<K, V>, vararg keys: K) {
+    copy(this, to, keys.toList())
+}
+
+fun <K, V> MutableMap<K, V>.copyFrom(from: Map<K, V>, vararg keys: K) {
+    copy(from, this, keys.toList())
 }
 
 fun <SK, SV, DK, DV> Map<SK, SV>.mapMap(transform: (Map.Entry<SK, SV>) -> Pair<DK, DV>): Map<DK, DV> {

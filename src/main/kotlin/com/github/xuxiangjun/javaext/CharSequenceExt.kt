@@ -1,5 +1,8 @@
 package com.github.xuxiangjun.javaext
 
+import java.io.BufferedReader
+import java.io.ByteArrayInputStream
+import java.io.InputStreamReader
 import java.nio.charset.Charset
 import java.util.*
 
@@ -52,4 +55,11 @@ fun CharSequence.isEmail(): Boolean {
     return regex.matches(this)
 }
 
+fun String.inputStream(charset: Charset = Charsets.UTF_8): ByteArrayInputStream {
+    return ByteArrayInputStream(toByteArray(charset))
+}
+
+fun String.bufferedReader(charset: Charset = Charsets.UTF_8): BufferedReader {
+    return BufferedReader(InputStreamReader(ByteArrayInputStream(toByteArray(charset))))
+}
 
