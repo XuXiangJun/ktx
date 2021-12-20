@@ -1,11 +1,11 @@
 package com.github.xuxiangjun.javaext
 
 object MilliSecondX {
-    val Second = 1000L
-    val Minute = 60000L
-    val Hour = 3600000L
-    val Day = 86400000L
-    val Week = 604800000L
+    const val Second = 1000L
+    const val Minute = 60000L
+    const val Hour = 3600000L
+    const val Day = 86400000L
+    const val Week = 604800000L
 
     fun seconds(many: Int): Long {
         return Second * many
