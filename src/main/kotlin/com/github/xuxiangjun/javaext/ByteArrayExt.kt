@@ -48,11 +48,11 @@ fun ByteArray.base64DecodeToString(dstCharset: Charset = Charsets.UTF_8): String
  * Convert [1, 2, 3, 4] to 0x04030201 if little endian, 0x01020304 if big endian
  */
 fun ByteArray.toInt(bigEndian: Boolean = false): Int {
-    if (size > 4) {
+    if (size > Int.SIZE_BYTES) {
         throw IllegalArgumentException("Too big data, length can't greater than 4")
     }
     var ret = 0
-    for (i in 0 until size) {
+    for (i in indices) {
         val index = if (bigEndian) size - 1 - i else i
         ret = ((this[index].toInt() and 0xff) shl (8 * i)) or ret
     }
@@ -63,11 +63,11 @@ fun ByteArray.toInt(bigEndian: Boolean = false): Int {
  * Convert [1, 2, 3, 4, 5, 6, 7, 8] to 0x0807060504030201 if little endian, 0x0102030405060708 if big endian
  */
 fun ByteArray.toLong(bigEndian: Boolean = false): Long {
-    if (size > 8) {
+    if (size > Long.SIZE_BYTES) {
         throw IllegalArgumentException("Too big data, length can't greater than 8")
     }
     var ret = 0L
-    for (i in 0 until size) {
+    for (i in indices) {
         val index = if (bigEndian) size - 1 - i else i
         ret = ((this[index].toLong() and 0xffL) shl (8 * i)) or ret
     }

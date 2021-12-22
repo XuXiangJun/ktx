@@ -20,82 +20,106 @@ fun Byte.toHex(): String {
     }
 }
 
+fun Byte.getBit(index: Int): Int {
+    if (index < 0 || index >= Byte.SIZE_BITS) {
+        throw IndexOutOfBoundsException("Byte is ${Byte.SIZE_BITS} bits, $index is invalid")
+    }
+    return toInt() shr index and 1
+}
+
 operator fun Char.get(index: Int): Byte {
-    if (index < 0 || index > 1) {
-        throw IndexOutOfBoundsException("Char is always 2 bytes, $index is invalid")
+    if (index < 0 || index >= Char.SIZE_BYTES) {
+        throw IndexOutOfBoundsException("Char is ${Char.SIZE_BYTES} bytes, $index is invalid")
     }
     return (this.code shr (8 * index) and 0xff).toByte()
 }
 
-fun Char.toByteArray(littleEndian: Boolean = true): ByteArray {
+fun Char.getBit(index: Int): Int {
+    if (index < 0 || index >= Char.SIZE_BITS) {
+        throw IndexOutOfBoundsException("Char is ${Char.SIZE_BITS} bits, $index is invalid")
+    }
+
+    return this.code shr index and 1
+}
+
+/**
+ * Get little endian ByteArray
+ */
+fun Char.toByteArray(): ByteArray {
     val i = this.code
-    return if (littleEndian) {
-        byteArrayOf(
-            (i and 0xff).toByte(),
-            (i shr 8 and 0xff).toByte()
-        )
-    } else {
-        byteArrayOf(
-            (i shr 8 and 0xff).toByte(),
-            (i and 0xff).toByte()
-        )
+    return ByteArray(Char.SIZE_BYTES) { index ->
+        (i shr (8 * index) and 0xff).toByte()
+    }
+}
+
+operator fun Short.get(index: Int): Byte {
+    if (index < 0 || index >= Short.SIZE_BYTES) {
+        throw IndexOutOfBoundsException("Char is ${Short.SIZE_BYTES} bytes, $index is invalid")
+    }
+    return (toInt() shr (8 * index) and 0xff).toByte()
+}
+
+fun Short.getBit(index: Int): Int {
+    if (index < 0 || index >= Short.SIZE_BITS) {
+        throw IndexOutOfBoundsException("Char is ${Short.SIZE_BITS} bits, $index is invalid")
+    }
+    return toInt() shr index and 1
+}
+
+/**
+ * Get little endian ByteArray
+ */
+fun Short.toByteArray(): ByteArray {
+    val i = toInt()
+    return ByteArray(Short.SIZE_BYTES) { index ->
+        (i shr (8 * index) and 0xff).toByte()
     }
 }
 
 operator fun Int.get(index: Int): Byte {
-    if (index < 0 || index > 3) {
-        throw IndexOutOfBoundsException("Int is always 4 bytes, $index is invalid")
+    if (index < 0 || index >= Int.SIZE_BYTES) {
+        throw IndexOutOfBoundsException("Int is ${Int.SIZE_BYTES} bytes, $index is invalid")
     }
     return (this shr (8 * index) and 0xff).toByte()
 }
 
-fun Int.toByteArray(littleEndian: Boolean = true): ByteArray {
-    return if (littleEndian) {
-        byteArrayOf(
-            (this and 0xff).toByte(),
-            (this shr 8 and 0xff).toByte(),
-            (this shr 16 and 0xff).toByte(),
-            (this shr 24 and 0xff).toByte()
-        )
-    } else {
-        byteArrayOf(
-            (this shr 24 and 0xff).toByte(),
-            (this shr 16 and 0xff).toByte(),
-            (this shr 8 and 0xff).toByte(),
-            (this and 0xff).toByte(),
-        )
+fun Int.getBit(index: Int): Int {
+    if (index < 0 || index >= Int.SIZE_BITS) {
+        throw IndexOutOfBoundsException("Int is ${Int.SIZE_BITS} bits, $index is invalid")
+    }
+    return this shr index and 1
+}
+
+/**
+ * Get little endian ByteArray
+ */
+fun Int.toByteArray(): ByteArray {
+    val i = this
+    return ByteArray(Int.SIZE_BYTES) { index ->
+        (i shr (8 * index) and 0xff).toByte()
     }
 }
 
 operator fun Long.get(index: Int): Byte {
-    if (index < 0 || index > 7) {
-        throw IndexOutOfBoundsException("Long is always 8 bytes, $index is invalid")
+    if (index < 0 || index >= Long.SIZE_BYTES) {
+        throw IndexOutOfBoundsException("Long is ${Long.SIZE_BYTES} bytes, $index is invalid")
     }
     return (this shr (8 * index) and 0xff).toByte()
 }
 
-fun Long.toByteArray(littleEndian: Boolean = true): ByteArray {
-    return if (littleEndian) {
-        byteArrayOf(
-            (this and 0xff).toByte(),
-            (this shr 8 and 0xff).toByte(),
-            (this shr 16 and 0xff).toByte(),
-            (this shr 24 and 0xff).toByte(),
-            (this shr 32 and 0xff).toByte(),
-            (this shr 40 and 0xff).toByte(),
-            (this shr 48 and 0xff).toByte(),
-            (this shr 56 and 0xff).toByte()
-        )
-    } else {
-        byteArrayOf(
-            (this shr 56 and 0xff).toByte(),
-            (this shr 48 and 0xff).toByte(),
-            (this shr 40 and 0xff).toByte(),
-            (this shr 32 and 0xff).toByte(),
-            (this shr 24 and 0xff).toByte(),
-            (this shr 16 and 0xff).toByte(),
-            (this shr 8 and 0xff).toByte(),
-            (this and 0xff).toByte(),
-        )
+fun Long.getBit(index: Int): Int {
+    if (index < 0 || index >= Long.SIZE_BITS) {
+        throw IndexOutOfBoundsException("Long is ${Long.SIZE_BITS} bits, $index is invalid")
+    }
+    return (this shr index and 1L).toInt()
+}
+
+/**
+ * Get little endian ByteArray
+ */
+fun Long.toByteArray(): ByteArray {
+    val l = this
+    return ByteArray(Long.SIZE_BYTES) { index ->
+        (l shr (8 * index) and 0xff).toByte()
     }
 }
