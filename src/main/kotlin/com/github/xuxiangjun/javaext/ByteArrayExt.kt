@@ -116,3 +116,13 @@ fun ByteArray.sha1(): ByteArray {
 fun ByteArray.sha256(): ByteArray {
     return Hash.SHA256.hash(this)
 }
+
+fun ByteArray.getBit(index: Int): Int {
+    if (index < 0 || index >= (Byte.SIZE_BITS * size)) {
+        throw IndexOutOfBoundsException("index: $index out of bytes bits range")
+    }
+
+    val byteOff = index / Byte.SIZE_BITS
+    val bitOff = index % Byte.SIZE_BITS
+    return this[byteOff].toInt() shr bitOff and 1
+}
