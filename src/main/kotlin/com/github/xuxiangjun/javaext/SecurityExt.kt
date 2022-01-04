@@ -12,9 +12,9 @@ import java.security.interfaces.ECPublicKey
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
 import java.security.spec.*
-import javax.crypto.Cipher
-import javax.crypto.KeyAgreement
+import javax.crypto.*
 import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 
 fun MessageDigest.digest(file: File): ByteArray {
@@ -48,6 +48,11 @@ interface Hash {
     object SHA256 : Hash {
         override val messageDigest: MessageDigest
             get() = MessageDigest.getInstance("sha-256")
+    }
+
+    object SHA512 : Hash {
+        override val messageDigest: MessageDigest
+            get() = MessageDigest.getInstance("sha-512")
     }
 
     val messageDigest: MessageDigest
@@ -256,5 +261,64 @@ object RSA {
         val cipher = Cipher.getInstance(transformation)
         cipher.init(Cipher.DECRYPT_MODE, privateKey)
         return cipher.doFinal(data)
+    }
+}
+
+object HMAC {
+    private fun genMac(key: ByteArray, algorithm: String): Mac {
+        val mac = Mac.getInstance(algorithm)
+        val spec = SecretKeySpec(key, algorithm)
+        mac.init(spec)
+        return mac
+    }
+
+    private fun hmacSHA1(key: ByteArray): Mac {
+        return genMac(key, "HmacSHA1")
+    }
+
+    private fun hmacSHA256(key: ByteArray): Mac {
+        return genMac(key, "HmacSHA256")
+    }
+
+    private fun hmacSHA512(key: ByteArray): Mac {
+        return genMac(key, "HmacSHA512")
+    }
+
+    fun sha1(key: ByteArray, data: ByteArray): ByteArray {
+        return hmacSHA1(key).doFinal(data)
+    }
+
+    fun sha256(key: ByteArray, data: ByteArray): ByteArray {
+        return hmacSHA256(key).doFinal(data)
+    }
+
+    fun sha512(key: ByteArray, data: ByteArray): ByteArray {
+        return hmacSHA512(key).doFinal(data)
+    }
+}
+
+object PBKDF2 {
+
+    private fun genSecretKey(algorithm: String, keySpec: PBEKeySpec): SecretKey {
+        val factory = SecretKeyFactory.getInstance(algorithm)
+        return factory.generateSecret(keySpec)
+    }
+
+    fun hmacSHA1(password: CharArray, salt: ByteArray, iterationCount: Int, keyLength: Int): ByteArray {
+        val spec = PBEKeySpec(password, salt, iterationCount, keyLength)
+        val secret = genSecretKey("PBKDF2WithHmacSHA1", spec)
+        return secret.encoded
+    }
+
+    fun hmacSHA256(password: CharArray, salt: ByteArray, iterationCount: Int, keyLength: Int): ByteArray {
+        val spec = PBEKeySpec(password, salt, iterationCount, keyLength)
+        val secret = genSecretKey("PBKDF2WithHmacSHA256", spec)
+        return secret.encoded
+    }
+
+    fun hmacSHA512(password: CharArray, salt: ByteArray, iterationCount: Int, keyLength: Int): ByteArray {
+        val spec = PBEKeySpec(password, salt, iterationCount, keyLength)
+        val secret = genSecretKey("PBKDF2WithHmacSHA512", spec)
+        return secret.encoded
     }
 }
