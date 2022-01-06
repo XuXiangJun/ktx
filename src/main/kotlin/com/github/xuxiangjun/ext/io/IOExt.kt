@@ -1,5 +1,6 @@
-package com.github.xuxiangjun.javaext
+package com.github.xuxiangjun.ext.io
 
+import com.github.xuxiangjun.ext.security.Hash
 import java.io.*
 
 fun uses(vararg args: Closeable, block: () -> Unit) {

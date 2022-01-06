@@ -1,4 +1,4 @@
-package com.github.xuxiangjun.javaext
+package com.github.xuxiangjun.ext.time
 
 interface TimeX {
     val Second: Long
@@ -26,20 +26,4 @@ interface TimeX {
     fun weeks(many: Int): Long {
         return Week * many
     }
-}
-
-object MilliSecondX : TimeX {
-    override val Second = 1000L
-    override val Minute = 60000L
-    override val Hour = 3600000L
-    override val Day = 86400000L
-    override val Week = 604800000L
-}
-
-object SecondX : TimeX {
-    override val Second = 1L
-    override val Minute = 60L
-    override val Hour = 3600L
-    override val Day = 86400L
-    override val Week = 604800L
 }

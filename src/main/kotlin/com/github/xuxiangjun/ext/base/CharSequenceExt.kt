@@ -1,5 +1,6 @@
-package com.github.xuxiangjun.javaext
+package com.github.xuxiangjun.ext.base
 
+import com.github.xuxiangjun.ext.security.Hash
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader

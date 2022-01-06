@@ -1,4 +1,4 @@
-package com.github.xuxiangjun.javaext
+package com.github.xuxiangjun.ext.random
 
 import kotlin.random.Random
 

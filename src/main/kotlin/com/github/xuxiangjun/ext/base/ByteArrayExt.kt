@@ -1,5 +1,6 @@
-package com.github.xuxiangjun.javaext
+package com.github.xuxiangjun.ext.base
 
+import com.github.xuxiangjun.ext.security.Hash
 import java.io.ByteArrayOutputStream
 import java.math.BigInteger
 import java.nio.charset.Charset

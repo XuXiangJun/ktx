@@ -1,4 +1,4 @@
-package com.github.xuxiangjun.javaext
+package com.github.xuxiangjun.ext.base
 
 fun Byte.toBin(): String {
     val sb = StringBuilder(8)
