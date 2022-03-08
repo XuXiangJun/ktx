@@ -3,6 +3,7 @@ package com.github.xuxiangjun.ext.base
 import com.github.xuxiangjun.ext.security.Hash
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
 import java.io.InputStreamReader
 import java.nio.charset.Charset
 import java.util.*
@@ -18,6 +19,50 @@ fun CharSequence.hexToByteArray(): ByteArray {
         val sub = text.substring(it * 2, it * 2 + 2)
         sub.toInt(16).toByte()
     }
+}
+
+/**
+ * Convert hex text block to ByteArray
+ * Concatenate all lines firstly, then convert to ByteArray
+ * Example:
+ * """
+ * 01020
+ * 304
+ * """
+ * to
+ * [1, 2, 3, 4]
+ */
+fun CharSequence.hexBlockToByteArray(): ByteArray {
+    val sb = StringBuilder()
+    toString()
+        .bufferedReader()
+        .lines()
+        .map { line ->
+            sb.append(line)
+        }
+    return sb.hexToByteArray()
+}
+
+/**
+ * Convert hex lines to ByteArray
+ * Convert each line to ByteArray firstly, then concatenate all ByteArrays
+ * Example:
+ * """
+ * 01020
+ * 304
+ * """
+ * to
+ * [0, 0x10, 0x20, 3, 4]
+ */
+fun CharSequence.hexLinesToByteArray(): ByteArray {
+    val byteOS = ByteArrayOutputStream()
+    toString()
+        .bufferedReader()
+        .lines()
+        .forEach { line ->
+            byteOS.writeBytes(line.hexToByteArray())
+        }
+    return byteOS.toByteArray()
 }
 
 fun CharSequence.base64Encode(srcCharset: Charset = Charsets.UTF_8): String {
