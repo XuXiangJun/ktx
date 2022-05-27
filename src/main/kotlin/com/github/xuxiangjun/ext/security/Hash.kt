@@ -5,25 +5,6 @@ import java.nio.charset.Charset
 import java.security.MessageDigest
 
 interface Hash {
-    object MD5 : Hash {
-        override val messageDigest: MessageDigest
-            get() = MessageDigest.getInstance("md5")
-    }
-
-    object SHA1 : Hash {
-        override val messageDigest: MessageDigest
-            get() = MessageDigest.getInstance("sha-1")
-    }
-
-    object SHA256 : Hash {
-        override val messageDigest: MessageDigest
-            get() = MessageDigest.getInstance("sha-256")
-    }
-
-    object SHA512 : Hash {
-        override val messageDigest: MessageDigest
-            get() = MessageDigest.getInstance("sha-512")
-    }
 
     val messageDigest: MessageDigest
 

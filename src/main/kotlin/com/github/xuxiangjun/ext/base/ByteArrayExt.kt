@@ -1,6 +1,8 @@
 package com.github.xuxiangjun.ext.base
 
-import com.github.xuxiangjun.ext.security.Hash
+import com.github.xuxiangjun.ext.security.MD5
+import com.github.xuxiangjun.ext.security.SHA1
+import com.github.xuxiangjun.ext.security.SHA256
 import java.io.ByteArrayOutputStream
 import java.math.BigInteger
 import java.nio.charset.Charset
@@ -107,15 +109,15 @@ fun mergeBytesList(dataList: List<ByteArray>): ByteArray {
 }
 
 fun ByteArray.md5(): ByteArray {
-    return Hash.MD5.hash(this)
+    return MD5.hash(this)
 }
 
 fun ByteArray.sha1(): ByteArray {
-    return Hash.SHA1.hash(this)
+    return SHA1.hash(this)
 }
 
 fun ByteArray.sha256(): ByteArray {
-    return Hash.SHA256.hash(this)
+    return SHA256.hash(this)
 }
 
 fun ByteArray.getBit(index: Int): Int {

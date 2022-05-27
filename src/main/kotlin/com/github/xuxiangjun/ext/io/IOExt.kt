@@ -1,6 +1,9 @@
 package com.github.xuxiangjun.ext.io
 
 import com.github.xuxiangjun.ext.security.Hash
+import com.github.xuxiangjun.ext.security.MD5
+import com.github.xuxiangjun.ext.security.SHA1
+import com.github.xuxiangjun.ext.security.SHA256
 import java.io.*
 
 fun uses(vararg args: Closeable, block: () -> Unit) {
@@ -74,13 +77,13 @@ fun File.toBufferReader(): BufferedReader {
 }
 
 fun File.md5(): ByteArray {
-    return Hash.MD5.hash(this)
+    return MD5.hash(this)
 }
 
 fun File.sha1(): ByteArray {
-    return Hash.SHA1.hash(this)
+    return SHA1.hash(this)
 }
 
 fun File.sha256(): ByteArray {
-    return Hash.SHA256.hash(this)
+    return SHA256.hash(this)
 }

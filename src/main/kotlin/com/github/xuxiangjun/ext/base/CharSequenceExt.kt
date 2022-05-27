@@ -1,6 +1,9 @@
 package com.github.xuxiangjun.ext.base
 
 import com.github.xuxiangjun.ext.security.Hash
+import com.github.xuxiangjun.ext.security.MD5
+import com.github.xuxiangjun.ext.security.SHA1
+import com.github.xuxiangjun.ext.security.SHA256
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -84,15 +87,15 @@ fun CharSequence.base64DecodeToByteArray(): ByteArray {
 }
 
 fun CharSequence.md5(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    return Hash.MD5.hash(this, srcCharset)
+    return MD5.hash(this, srcCharset)
 }
 
 fun CharSequence.sha1(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    return Hash.SHA1.hash(this, srcCharset)
+    return SHA1.hash(this, srcCharset)
 }
 
 fun CharSequence.sha256(srcCharset: Charset = Charsets.UTF_8): ByteArray {
-    return Hash.SHA256.hash(this, srcCharset)
+    return SHA256.hash(this, srcCharset)
 }
 
 fun CharSequence.isEmail(): Boolean {
