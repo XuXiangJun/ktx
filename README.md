@@ -1,5 +1,5 @@
 # kt-ext
-extensions for kotlin
+extensions for Kotlin(JVM)
 
 [![](https://jitpack.io/v/XuXiangJun/kt-ext.svg)](https://jitpack.io/#XuXiangJun/kt-ext)
 
