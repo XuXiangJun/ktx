@@ -1,6 +1,5 @@
 package com.github.xuxiangjun.ext.io
 
-import com.github.xuxiangjun.ext.security.Hash
 import com.github.xuxiangjun.ext.security.MD5
 import com.github.xuxiangjun.ext.security.SHA1
 import com.github.xuxiangjun.ext.security.SHA256
@@ -86,4 +85,20 @@ fun File.sha1(): ByteArray {
 
 fun File.sha256(): ByteArray {
     return SHA256.hash(this)
+}
+
+fun Serializable.toByteArray(): ByteArray {
+    val byteArrayOS = ByteArrayOutputStream()
+    ObjectOutputStream(byteArrayOS).use {
+        it.writeObject(this)
+        it.flush()
+    }
+    return byteArrayOS.toByteArray()
+}
+
+fun <T: Serializable> ByteArray.toSerializable(): T {
+    return ObjectInputStream(ByteArrayInputStream(this)).use {
+        @Suppress("UNCHECKED_CAST")
+        it.readObject() as T
+    }
 }
