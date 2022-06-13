@@ -1,6 +1,5 @@
 package com.github.xuxiangjun.ext.base
 
-import com.github.xuxiangjun.ext.security.Hash
 import com.github.xuxiangjun.ext.security.MD5
 import com.github.xuxiangjun.ext.security.SHA1
 import com.github.xuxiangjun.ext.security.SHA256
@@ -63,7 +62,7 @@ fun CharSequence.hexLinesToByteArray(): ByteArray {
         .bufferedReader()
         .lines()
         .forEach { line ->
-            byteOS.writeBytes(line.hexToByteArray())
+            byteOS.write(line.hexToByteArray())
         }
     return byteOS.toByteArray()
 }

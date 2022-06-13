@@ -15,16 +15,25 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                groupId = "com.github.XuXiangJun"
-                artifactId = "kt-ext"
-                version = "1.11.3"
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
-                from(components["java"])
-            }
+tasks {
+    compileKotlin {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.XuXiangJun"
+            artifactId = "kt-ext"
+            version = "1.11.3"
+
+            from(components["java"])
         }
     }
 }
