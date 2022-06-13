@@ -3,8 +3,11 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.XuXiangJun"
-version = "1.11.3"
+val libGroup = "com.github.XuXiangJun"
+val libVersion = "1.11.4"
+
+group = libGroup
+version = libVersion
 
 repositories {
     mavenCentral()
@@ -29,9 +32,9 @@ tasks {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "com.github.XuXiangJun"
+            groupId = libGroup
             artifactId = "kt-ext"
-            version = "1.11.3"
+            version = libVersion
 
             from(components["java"])
         }
