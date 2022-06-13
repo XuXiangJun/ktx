@@ -17,12 +17,12 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("release") {
+            create<MavenPublication>("maven") {
                 groupId = "com.github.XuXiangJun"
                 artifactId = "kt-ext"
                 version = "1.11.1"
 
-                from(components["java"])
+                from(components["kotlin"])
             }
         }
     }
