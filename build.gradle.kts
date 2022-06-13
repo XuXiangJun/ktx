@@ -4,6 +4,7 @@ plugins {
 }
 
 group = "com.github.XuXiangJun"
+version = "1.11.3"
 
 repositories {
     mavenCentral()
@@ -20,9 +21,9 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "com.github.XuXiangJun"
                 artifactId = "kt-ext"
-                version = "1.11.1"
+                version = "1.11.3"
 
-                from(components["kotlin"])
+                from(components["java"])
             }
         }
     }
