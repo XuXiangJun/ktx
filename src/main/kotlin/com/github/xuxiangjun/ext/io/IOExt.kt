@@ -70,6 +70,10 @@ fun InputStream.readInt64(littleEndian: Boolean = true): Long {
     }
 }
 
+fun InputStream.toBufferedReader(): BufferedReader {
+    return BufferedReader(InputStreamReader(this))
+}
+
 @Throws(FileNotFoundException::class)
 fun File.toBufferReader(): BufferedReader {
     return BufferedReader(FileReader(this))

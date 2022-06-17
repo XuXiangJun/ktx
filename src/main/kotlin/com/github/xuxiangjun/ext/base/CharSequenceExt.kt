@@ -37,7 +37,7 @@ fun CharSequence.hexToByteArray(): ByteArray {
 fun CharSequence.hexBlockToByteArray(): ByteArray {
     val sb = StringBuilder()
     toString()
-        .bufferedReader()
+        .toBufferedReader()
         .lines()
         .map { line ->
             sb.append(line)
@@ -59,7 +59,7 @@ fun CharSequence.hexBlockToByteArray(): ByteArray {
 fun CharSequence.hexLinesToByteArray(): ByteArray {
     val byteOS = ByteArrayOutputStream()
     toString()
-        .bufferedReader()
+        .toBufferedReader()
         .lines()
         .forEach { line ->
             byteOS.write(line.hexToByteArray())
@@ -107,7 +107,7 @@ fun String.inputStream(charset: Charset = Charsets.UTF_8): ByteArrayInputStream 
     return ByteArrayInputStream(toByteArray(charset))
 }
 
-fun String.bufferedReader(charset: Charset = Charsets.UTF_8): BufferedReader {
+fun String.toBufferedReader(charset: Charset = Charsets.UTF_8): BufferedReader {
     return BufferedReader(InputStreamReader(ByteArrayInputStream(toByteArray(charset))))
 }
 

@@ -3,7 +3,10 @@ package com.github.xuxiangjun.ext.base
 import com.github.xuxiangjun.ext.security.MD5
 import com.github.xuxiangjun.ext.security.SHA1
 import com.github.xuxiangjun.ext.security.SHA256
+import java.io.BufferedReader
+import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
+import java.io.InputStreamReader
 import java.math.BigInteger
 import java.nio.charset.Charset
 import java.util.*
@@ -129,3 +132,8 @@ fun ByteArray.getBit(index: Int): Int {
     val bitOff = index % Byte.SIZE_BITS
     return this[byteOff].toInt() shr bitOff and 1
 }
+
+fun ByteArray.toBufferedReader(): BufferedReader {
+    return BufferedReader(InputStreamReader(ByteArrayInputStream(this)))
+}
+
