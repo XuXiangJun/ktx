@@ -1,9 +1,6 @@
 package com.github.xuxiangjun.ext.io
 
-import com.github.xuxiangjun.ext.security.MD5
-import com.github.xuxiangjun.ext.security.SHA1
-import com.github.xuxiangjun.ext.security.SHA256
-import java.io.*
+import java.io.Closeable
 
 fun uses(vararg args: Closeable, block: () -> Unit) {
     try {
