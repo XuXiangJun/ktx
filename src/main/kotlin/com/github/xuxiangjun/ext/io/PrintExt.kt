@@ -1,6 +1,6 @@
 package com.github.xuxiangjun.ext.io
 
-enum class PrintColor(val color: Int) {
+enum class PrintColor(val value: Int) {
     BLACK(0),
     RED(1),
     GREEN(2),
@@ -12,7 +12,7 @@ enum class PrintColor(val color: Int) {
     DEFAULT(8)
 }
 
-enum class PrintTwinkle(val twinkle: Int) {
+enum class PrintTwinkle(val value: Int) {
     SLOW(5),
     FAST(6)
 }
@@ -31,9 +31,9 @@ class PrintConfig(
 fun prettyPrint(any: Any, config: PrintConfig = PrintConfig()) {
     val sb = StringBuilder()
     sb.append("\u001B[")
-    sb.append(30 + config.foreColor.color)
+    sb.append(30 + config.foreColor.value)
     if (config.backColor != null) {
-        sb.append(";").append(40 + config.backColor.color)
+        sb.append(";").append(40 + config.backColor.value)
     }
     if (config.bold) {
         sb.append(";").append("1")
@@ -48,7 +48,7 @@ fun prettyPrint(any: Any, config: PrintConfig = PrintConfig()) {
         sb.append(";").append("4")
     }
     if (config.twinkle != null) {
-        sb.append(";").append(config.twinkle.twinkle)
+        sb.append(";").append(config.twinkle.value)
     }
     if (config.hidden) {
         sb.append(";").append("7")
