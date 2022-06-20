@@ -28,7 +28,7 @@ class PrintConfig(
     val hidden: Boolean = false
 )
 
-fun prettyPrint(any: Any, config: PrintConfig = PrintConfig()) {
+private fun genPrettyCharSequence(any: Any, config: PrintConfig = PrintConfig()): CharSequence {
     val sb = StringBuilder()
     sb.append("\u001B[")
     sb.append(30 + config.foreColor.value)
@@ -56,5 +56,13 @@ fun prettyPrint(any: Any, config: PrintConfig = PrintConfig()) {
     sb.append("m")
     sb.append(any)
     sb.append("\u001B[m")
-    println(sb)
+    return sb
+}
+
+fun prettyPrint(any: Any, config: PrintConfig = PrintConfig()) {
+    print(genPrettyCharSequence(any, config))
+}
+
+fun prettyPrintln(any: Any, config: PrintConfig = PrintConfig()) {
+    println(genPrettyCharSequence(any, config))
 }
