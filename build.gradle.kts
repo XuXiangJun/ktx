@@ -4,7 +4,7 @@ plugins {
 }
 
 val libGroup = "com.github.XuXiangJun"
-val libVersion = "1.12.0"
+val libVersion = "1.13.0"
 
 group = libGroup
 version = libVersion
