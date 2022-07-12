@@ -50,4 +50,20 @@ enum class LocaleX(val code: String) {
     Vietnam("VN"), // 越南
     Zimbabwe("ZA"), // 津巴布韦
     ;
+
+    companion object {
+        @JvmStatic
+        fun getForCode(code: String): LocaleX? {
+            return values().find {
+                it.code == code.uppercase()
+            }
+        }
+
+        @JvmStatic
+        fun getForName(name: String, ignoreCase: Boolean = true): LocaleX? {
+            return values().find {
+                it.name.equals(name, ignoreCase)
+            }
+        }
+    }
 }

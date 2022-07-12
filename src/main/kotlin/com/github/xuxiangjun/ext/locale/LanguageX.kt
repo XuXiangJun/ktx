@@ -38,4 +38,20 @@ enum class LanguageX(val code: String) {
     Vietnamese("vi"), // 越南语
     Chinese("zh"), // 中文
     ;
+
+    companion object {
+        @JvmStatic
+        fun getForCode(code: String): LanguageX? {
+            return values().find {
+                it.code == code.lowercase()
+            }
+        }
+
+        @JvmStatic
+        fun getForName(name: String, ignoreCase: Boolean = true): LanguageX? {
+            return values().find {
+                it.name.equals(name, ignoreCase)
+            }
+        }
+    }
 }
