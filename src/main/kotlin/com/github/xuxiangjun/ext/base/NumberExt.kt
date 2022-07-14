@@ -123,3 +123,55 @@ fun Long.toByteArray(): ByteArray {
         (l shr (8 * index) and 0xff).toByte()
     }
 }
+
+
+//region size convert
+fun Long.byteToKB(): Double {
+    return toDouble() / 1024.0
+}
+
+fun Long.byteToMB(): Double {
+    return toDouble() / 1048576.0 // 1048576 == 1024 * 1024
+}
+
+fun Long.byteToGB(): Double {
+    return toDouble() / 1073741824.0 // 1073741824 == 1024 * 1024 * 1024
+}
+
+fun Double.KBToBytes(): Long {
+    return (this * 1024.0).toLong()
+}
+
+fun Double.KBToMB(): Double {
+    return this / 1024.0
+}
+
+fun Double.KBToGB(): Double {
+    return this / 1048576.0
+}
+
+fun Double.MBToBytes(): Long {
+    return (this * 1048576.0).toLong()
+}
+
+fun Double.MBToKB(): Double {
+    return this * 1024.0
+}
+
+fun Double.MBToGB(): Double {
+    return this / 1024.0
+}
+
+fun Double.GBToBytes(): Long {
+    return (this * 1073741824.0).toLong()
+}
+
+fun Double.GBToKB(): Double {
+    return this * 1048576.0
+}
+
+fun Double.GBToMB(): Double {
+    return this * 1024
+}
+//endregion
+
