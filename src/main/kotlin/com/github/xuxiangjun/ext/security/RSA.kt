@@ -14,7 +14,7 @@ object RSA {
         val publicKey: RSAPublicKey
     )
 
-    fun getKeyPairGenerator(keySize: Int): KeyPairGenerator {
+    private fun getKeyPairGenerator(keySize: Int): KeyPairGenerator {
         val generator = KeyPairGenerator.getInstance("RSA")
         generator.initialize(keySize)
         return generator
