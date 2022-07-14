@@ -52,7 +52,7 @@ object EC {
         val publicKey: ECPublicKey,
     )
 
-    fun getKeyPairGenerator(name: CurveName): KeyPairGenerator {
+    private fun getKeyPairGenerator(name: CurveName): KeyPairGenerator {
         val generator = KeyPairGenerator.getInstance("EC")
         val parameter = ECGenParameterSpec(name.name)
         generator.initialize(parameter)

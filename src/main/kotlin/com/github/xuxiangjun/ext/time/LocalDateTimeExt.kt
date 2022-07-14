@@ -2,7 +2,6 @@ package com.github.xuxiangjun.ext.time
 
 import java.sql.Timestamp
 import java.time.LocalDateTime
-import java.time.ZoneOffset
 
 val LocalDateTime.millisecond: Int
     get() = nano / 1_000_000
