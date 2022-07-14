@@ -130,48 +130,132 @@ fun Long.byteToKB(): Double {
     return toDouble() / 1024.0
 }
 
+fun Int.byteToKB(): Double {
+    return toDouble() / 1024.0
+}
+
 fun Long.byteToMB(): Double {
     return toDouble() / 1048576.0 // 1048576 == 1024 * 1024
+}
+
+fun Int.byteToMB(): Double {
+    return toDouble() / 1048576.0
 }
 
 fun Long.byteToGB(): Double {
     return toDouble() / 1073741824.0 // 1073741824 == 1024 * 1024 * 1024
 }
 
+fun Int.byteToGB(): Double {
+    return toDouble() / 1073741824.0
+}
+
 fun Double.KBToBytes(): Long {
     return (this * 1024.0).toLong()
+}
+
+fun Long.KBToBytes(): Long {
+    return this * 1024
+}
+
+fun Int.KBToBytes(): Long {
+    return this * 1024L
 }
 
 fun Double.KBToMB(): Double {
     return this / 1024.0
 }
 
+fun Long.KBToMB(): Double {
+    return toDouble() / 1024.0
+}
+
+fun Int.KBToMB(): Double {
+    return toDouble() / 1024.0
+}
+
 fun Double.KBToGB(): Double {
     return this / 1048576.0
+}
+
+fun Long.KBToGB(): Double {
+    return toDouble() / 1048576.0
+}
+
+fun Int.KBToGB(): Double {
+    return toDouble() / 1048576.0
 }
 
 fun Double.MBToBytes(): Long {
     return (this * 1048576.0).toLong()
 }
 
+fun Long.MBToBytes(): Long {
+    return this * 1048576L
+}
+
+fun Int.MBtoBytes(): Long {
+    return this * 1048576L
+}
+
 fun Double.MBToKB(): Double {
     return this * 1024.0
+}
+
+fun Long.MBToKB(): Double {
+    return toDouble() * 1024.0
+}
+
+fun Int.MBToKB(): Double {
+    return toDouble() * 1024.0
 }
 
 fun Double.MBToGB(): Double {
     return this / 1024.0
 }
 
+fun Long.MBToGB(): Double {
+    return toDouble() / 1024.0
+}
+
+fun Int.MBToGB(): Double {
+    return toDouble() / 1024.0
+}
+
 fun Double.GBToBytes(): Long {
     return (this * 1073741824.0).toLong()
+}
+
+fun Long.GBToBytes(): Long {
+    return this * 1073741824L
+}
+
+fun Int.GBToBytes(): Long {
+    return this * 1073741824L
 }
 
 fun Double.GBToKB(): Double {
     return this * 1048576.0
 }
 
+fun Long.GBToKB(): Double {
+    return toDouble() * 1048576.0
+}
+
+fun Int.GBToKB(): Double {
+    return toDouble() * 1048576.0
+}
+
 fun Double.GBToMB(): Double {
-    return this * 1024
+    return this * 1024.0
+}
+
+fun Long.GBToMB(): Double {
+    return toDouble() * 1024.0
+}
+
+fun Int.GBToMB(): Double {
+    return toDouble() * 1024.0
 }
 //endregion
 
