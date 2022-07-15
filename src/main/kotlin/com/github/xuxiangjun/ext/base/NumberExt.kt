@@ -154,8 +154,12 @@ fun Double.KBToBytes(): Long {
     return (this * 1024.0).toLong()
 }
 
+fun Float.KBToBytes(): Long {
+    return (this * 1024f).toLong()
+}
+
 fun Long.KBToBytes(): Long {
-    return this * 1024
+    return this * 1024L
 }
 
 fun Int.KBToBytes(): Long {
@@ -164,6 +168,10 @@ fun Int.KBToBytes(): Long {
 
 fun Double.KBToMB(): Double {
     return this / 1024.0
+}
+
+fun Float.KBToMB(): Double {
+    return toDouble() / 1024.0
 }
 
 fun Long.KBToMB(): Double {
@@ -178,6 +186,10 @@ fun Double.KBToGB(): Double {
     return this / 1048576.0
 }
 
+fun Float.KBToGB(): Double {
+    return toDouble() / 1048576.0
+}
+
 fun Long.KBToGB(): Double {
     return toDouble() / 1048576.0
 }
@@ -188,6 +200,10 @@ fun Int.KBToGB(): Double {
 
 fun Double.MBToBytes(): Long {
     return (this * 1048576.0).toLong()
+}
+
+fun Float.MBToBytes(): Long {
+    return (this * 1048576f).toLong()
 }
 
 fun Long.MBToBytes(): Long {
@@ -202,6 +218,10 @@ fun Double.MBToKB(): Double {
     return this * 1024.0
 }
 
+fun Float.MBToKB(): Double {
+    return toDouble() * 1024.0
+}
+
 fun Long.MBToKB(): Double {
     return toDouble() * 1024.0
 }
@@ -212,6 +232,10 @@ fun Int.MBToKB(): Double {
 
 fun Double.MBToGB(): Double {
     return this / 1024.0
+}
+
+fun Float.MBToGB(): Double {
+    return toDouble() / 1024.0
 }
 
 fun Long.MBToGB(): Double {
@@ -226,6 +250,10 @@ fun Double.GBToBytes(): Long {
     return (this * 1073741824.0).toLong()
 }
 
+fun Float.GBToBytes(): Long {
+    return (toDouble() * 1073741824.0).toLong()
+}
+
 fun Long.GBToBytes(): Long {
     return this * 1073741824L
 }
@@ -238,6 +266,10 @@ fun Double.GBToKB(): Double {
     return this * 1048576.0
 }
 
+fun Float.GBToKB(): Double {
+    return toDouble() * 1048576.0
+}
+
 fun Long.GBToKB(): Double {
     return toDouble() * 1048576.0
 }
@@ -248,6 +280,10 @@ fun Int.GBToKB(): Double {
 
 fun Double.GBToMB(): Double {
     return this * 1024.0
+}
+
+fun Float.GBToMB(): Double {
+    return toDouble() * 1024.0
 }
 
 fun Long.GBToMB(): Double {
