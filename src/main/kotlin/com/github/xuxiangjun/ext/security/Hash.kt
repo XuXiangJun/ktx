@@ -6,17 +6,17 @@ import java.security.MessageDigest
 
 interface Hash {
 
-    val messageDigest: MessageDigest
+    fun newDigest(): MessageDigest
 
     fun hash(data: ByteArray): ByteArray {
-        return messageDigest.digest(data)
+        return newDigest().digest(data)
     }
 
     fun hash(charSequence: CharSequence, charset: Charset = Charsets.UTF_8): ByteArray {
-        return messageDigest.digest(charSequence.toString().toByteArray(charset))
+        return newDigest().digest(charSequence.toString().toByteArray(charset))
     }
 
     fun hash(file: File): ByteArray {
-        return messageDigest.digest(file)
+        return newDigest().digest(file)
     }
 }
