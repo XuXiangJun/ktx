@@ -7,23 +7,23 @@ interface TimeX {
     val Day: Long
     val Week: Long
 
-    fun seconds(many: Int): Long {
-        return Second * many
+    fun seconds(seconds: Int): Long {
+        return Second * seconds
     }
 
-    fun minutes(many: Int): Long {
-        return Minute * many
+    fun minutes(minutes: Int): Long {
+        return Minute * minutes
     }
 
-    fun hours(many: Int): Long {
-        return Hour * many
+    fun hours(hours: Int): Long {
+        return Hour * hours
     }
 
-    fun days(many: Int): Long {
-        return Day * many
+    fun days(days: Int): Long {
+        return Day * days
     }
 
-    fun weeks(many: Int): Long {
-        return Week * many
+    fun weeks(weeks: Int): Long {
+        return Week * weeks
     }
 }
