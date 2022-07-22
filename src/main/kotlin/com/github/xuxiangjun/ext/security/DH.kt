@@ -4,7 +4,6 @@ import com.github.xuxiangjun.ext.base.toUBigInteger
 import java.math.BigInteger
 import java.security.KeyFactory
 import java.security.KeyPairGenerator
-import java.security.PublicKey
 import javax.crypto.KeyAgreement
 import javax.crypto.interfaces.DHPrivateKey
 import javax.crypto.interfaces.DHPublicKey
@@ -37,15 +36,15 @@ object DH {
         )
     }
 
-    fun generateECKeyPair(length: Int): DHKeyPair {
+    fun generateDHKeyPair(length: Int): DHKeyPair {
         return getKeyPair(null, null, length)
     }
 
-    fun generateECKeyPair(p: BigInteger, g: BigInteger, length: Int): DHKeyPair {
+    fun generateDHKeyPair(p: BigInteger, g: BigInteger, length: Int): DHKeyPair {
         return getKeyPair(p, g, length)
     }
 
-    fun generateECKeyPair(p: ByteArray, g: ByteArray, length: Int): DHKeyPair {
+    fun generateDHKeyPair(p: ByteArray, g: ByteArray, length: Int): DHKeyPair {
         return getKeyPair(p.toUBigInteger(), g.toUBigInteger(), length)
     }
 

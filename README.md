@@ -13,6 +13,6 @@ extensions for Kotlin(JVM)
 ```
 ```
     dependencies {
-        implementation 'com.github.XuXiangJun:kt-ext:1.14.1'
+        implementation 'com.github.XuXiangJun:kt-ext:1.15.0'
     }
 ```
