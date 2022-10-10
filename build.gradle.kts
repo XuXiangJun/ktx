@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.7.20"
     id("maven-publish")
 }
 
 val libGroup = "com.github.XuXiangJun"
-val libVersion = "1.15.0"
+val libVersion = "1.16.0"
 
 group = libGroup
 version = libVersion
@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.20")
 }
 
 java {
