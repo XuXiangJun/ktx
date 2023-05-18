@@ -2,7 +2,7 @@ package com.github.xuxiangjun.ext.io
 
 import java.io.*
 
-fun Serializable.toByteArray(): ByteArray {
+fun Serializable.toObjectByteArray(): ByteArray {
     val byteArrayOS = ByteArrayOutputStream()
     ObjectOutputStream(byteArrayOS).use {
         it.writeObject(this)
