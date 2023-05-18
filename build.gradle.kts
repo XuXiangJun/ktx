@@ -3,6 +3,8 @@ plugins {
     id("maven-publish")
 }
 
+val kotlinVersion = "1.8.21"
+
 val libGroup = "com.github.XuXiangJun"
 val libVersion = "1.16.0"
 
@@ -15,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.20")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 }
 
 java {
