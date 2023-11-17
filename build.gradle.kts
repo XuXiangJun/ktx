@@ -1,11 +1,12 @@
 plugins {
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.9.20"
     id("maven-publish")
 }
 
-val kotlinVersion = "1.8.21"
+val kotlinVersion = "1.9.20"
 
 val libGroup = "com.github.XuXiangJun"
+val libArtifact = "ktx"
 val libVersion = "1.16.0"
 
 group = libGroup
@@ -35,7 +36,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = libGroup
-            artifactId = "kt-ext"
+            artifactId = libArtifact
             version = libVersion
 
             from(components["java"])
