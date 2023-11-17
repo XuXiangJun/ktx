@@ -1,7 +1,7 @@
-# kt-ext
+# ktx
 extensions for Kotlin(JVM)
 
-[![](https://jitpack.io/v/XuXiangJun/kt-ext.svg)](https://jitpack.io/#XuXiangJun/kt-ext)
+[![](https://jitpack.io/v/XuXiangJun/ktx.svg)](https://jitpack.io/#XuXiangJun/ktx)
 
 ```
     allprojects {
@@ -13,6 +13,6 @@ extensions for Kotlin(JVM)
 ```
 ```
     dependencies {
-        implementation 'com.github.XuXiangJun:kt-ext:1.17.0'
+        implementation 'com.github.XuXiangJun:ktx:2.0.1'
     }
 ```

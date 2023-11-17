@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "1.9.10"
     id("maven-publish")
 }
 
-val kotlinVersion = "1.9.20"
+val kotlinVersion = "1.9.10"
 
 val libGroup = "com.github.XuXiangJun"
 val libArtifact = "ktx"

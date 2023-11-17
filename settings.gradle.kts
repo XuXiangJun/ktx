@@ -1,2 +1,2 @@
-rootProject.name = "kt-ext"
+rootProject.name = "ktx"
 
