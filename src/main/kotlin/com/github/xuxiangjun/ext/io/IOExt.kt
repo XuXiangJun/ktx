@@ -19,10 +19,10 @@ fun uses(vararg args: Closeable, block: () -> Unit) {
     }
 }
 
-class ZipParams {
-    var level: Int? = null
-    var comment: String? = null
-    var method: Int? = null
+interface ZipParams {
+    var level: Int?
+    var comment: String?
+    var method: Int?
 }
 
 fun zipFolder(
@@ -33,20 +33,31 @@ fun zipFolder(
     if (!folder.isDirectory) {
         throw IllegalArgumentException("${folder.path} is not a folder")
     }
-    val zipParams = ZipParams()
+
+    val zipParams = object : ZipParams {
+        override var level: Int? = null
+        override var comment: String? = null
+        override var method: Int? = null
+
+        fun update(zipOS: ZipOutputStream) {
+            level?.let {
+                zipOS.setLevel(it)
+            }
+            comment?.let {
+                zipOS.setComment(it)
+            }
+            method?.let {
+                zipOS.setMethod(it)
+            }
+        }
+    }
     block?.invoke(zipParams)
+
     val folderPath = folder.path
     val folderName = folder.name
+
     ZipOutputStream(output).use { zipOS ->
-        zipParams.level?.let {
-            zipOS.setLevel(it)
-        }
-        zipParams.comment?.let {
-            zipOS.setComment(it)
-        }
-        zipParams.method?.let {
-            zipOS.setMethod(it)
-        }
+        zipParams.update(zipOS)
 
         folder.walk()
             .filter { it.isFile }
