@@ -97,8 +97,19 @@ fun CharSequence.sha256(srcCharset: Charset = Charsets.UTF_8): ByteArray {
     return SHA256.hash(this, srcCharset)
 }
 
+private val EmailRegex =
+    Regex("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))\$")
+
 fun CharSequence.isEmail(): Boolean {
-    val regex =
-        Regex("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))\$")
-    return regex.matches(this)
+    return EmailRegex.matches(this)
+}
+
+fun CharSequence.isDigit(): Boolean {
+    for (c in this) {
+        if (c.code !in '0'.code .. '9'.code) {
+            return false
+        }
+    }
+
+    return true
 }
