@@ -1,5 +1,9 @@
 package com.github.xuxiangjun.ext.base
 
+import java.math.BigDecimal
+import java.math.BigInteger
+import java.text.DecimalFormat
+
 fun Byte.toBin(): String {
     val sb = StringBuilder(8)
     val a = (toInt() and 0xff).toString(2)
@@ -295,3 +299,24 @@ fun Int.GBToMB(): Double {
 }
 //endregion
 
+fun Int.toThousandthString(): String {
+    return String.format("%,d", this)
+}
+
+fun Long.toThousandthString(): String {
+    return String.format("%,d", this)
+}
+
+fun BigInteger.toThousandthString(): String {
+    return DecimalFormat("#,###").format(this)
+}
+
+fun BigDecimal.toThousandthString(): String {
+    val formatBuilder = StringBuilder("#,###")
+    if (scale() > 0) {
+        formatBuilder.append(".")
+        formatBuilder.append("0".repeat(scale()))
+    }
+    val decimalFormat = DecimalFormat(formatBuilder.toString())
+    return decimalFormat.format(this)
+}
