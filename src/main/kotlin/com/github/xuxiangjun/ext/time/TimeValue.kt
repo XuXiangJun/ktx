@@ -1,6 +1,6 @@
 package com.github.xuxiangjun.ext.time
 
-interface TimeX {
+interface TimeValue {
     val Second: Long
     val Minute: Long
     val Hour: Long

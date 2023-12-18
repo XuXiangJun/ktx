@@ -1,6 +1,6 @@
 package com.github.xuxiangjun.ext.time
 
-object SecondX : TimeX {
+object SecondX : TimeValue {
     override val Second = 1L
     override val Minute = 60L
     override val Hour = 3600L
