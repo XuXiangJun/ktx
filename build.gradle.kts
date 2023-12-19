@@ -7,7 +7,7 @@ val kotlinVersion = "1.9.10"
 
 val libGroup = "com.github.XuXiangJun"
 val libArtifact = "ktx"
-val libVersion = "2.1.0"
+val libVersion = "2.2.0"
 
 group = libGroup
 version = libVersion
